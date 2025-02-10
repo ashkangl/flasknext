@@ -10,7 +10,7 @@ const Posts = () => {
 
     const fetchPosts = async () => {
         try {
-            const res = await fetch('https://flask-crud-9q8h.onrender.com/posts');
+            const res = await fetch('http://127.0.0.1:5000/posts');
             if (!res.ok) throw new Error('Network response was not ok');
             const rawResponse = await res.text();
             console.log('Raw Response:', rawResponse);
