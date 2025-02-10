@@ -1,6 +1,5 @@
 "use client"
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react"
 
 const Posts = () => {
@@ -31,7 +30,7 @@ const Posts = () => {
     }
 
     const handleDelete = async(postId) => {
-        const res = await fetch(`https://flask-crud-9q8h.onrender.com/posts/${postId}`,{method:'DELETE'})
+        const res = await fetch(`http://127.0.0.1:5000/posts/${postId}`,{method:'DELETE'})
         fetchPosts()
     }
 
