@@ -52,5 +52,18 @@ def deletepost(id):
     connect.close()
     return jsonify({'messages':'Post Delete Succesfully'}),200
 
+@app.route('/posts/<int:id>',methods=["PUT"])
+def updatepost(id):
+    connect = dbconnection()
+    data = request.get_json()
+    title = data.get('title')
+    content = data.get('content')
+    cur = connect.cursor()
+    cur.execute('UPDATE posts SET title = %s, content = %s WHERE id = %s',(title,content,id))
+    connect.commit()
+    cur.close()
+    connect.close()
+    return jsonify({'message':"Post Updated!"}),200
+
 if __name__ == "__main__":
     app.run(debug=True)
